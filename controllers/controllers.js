@@ -9,7 +9,7 @@ let controller = {
         });
     },
 
-    getImages: (req, res) => {
+    getProjects: (req, res) => {
         return res.status(200).send({
             // Set mongodb code here
         })
