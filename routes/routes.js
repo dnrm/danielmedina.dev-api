@@ -6,8 +6,8 @@ let controller = require('../controllers/controllers')
 
 router.get('/', controller.root);
 router.get('/get-projects', controller.getProjects);
-router.get('/get-project', controller.getProjects);
-router.post('/save-project');
-router.delete('/delete-project');
+router.get('/get-project', controller.getOneProject);
+router.post('/save-project', controller.saveProject);
+router.delete('/delete-project', controller.deleteProject);
 
 module.exports = router;

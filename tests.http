@@ -1,1 +1,9 @@
-GET http://localhost:2812/save-project
+POST http://localhost:2812/save-project
+Content-Type: application/x-www-form-urlencoded
+
+title=hiiii
+&description=hello message
+
+###
+
+GET http://localhost:2812/get-projects

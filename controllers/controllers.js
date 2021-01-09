@@ -1,6 +1,14 @@
 require('dotenv').config();
-const mongodb = require('mongodb');
-const Client = mongodb.MongoClient;
+const mongooose = require('mongoose'); 
+
+mongooose.connect('mongodb://127.0.0.1:27017/', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const projectSchema = {
+    title: String,
+    description: String
+}
+
+const Project = mongooose.model('project', projectSchema);
 
 let controller = {
     root: (req, res) => {
@@ -10,20 +18,40 @@ let controller = {
     },
 
     getProjects: (req, res) => {
-        return res.status(200).send({
-            // Set mongodb code here
-        })
+        Project.find({}, (err, succ) => {
+            if (err) return console.log(err);
+            return res.status(200).send(succ); 
+        });
     },
 
-    createConnection: async(req, res) => {
-        const connection = await Client.connect('mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb', { useUnifiedTopology: true });
-        const db = await connection.db("dnrm")
-        return db;
+    getOneProject(req, res) {
+        
     },
 
-    info: async(req, res) => {
-        this.createConnection();
-    }
+    saveProject(req, res) {
+        const project = new Project({
+            title: req.body.title,
+            description: req.body.description
+        });
+        project.save()
+            .then(() => {
+                res.status(200).send(project);
+            })
+            .catch(() => {
+                res.status(500).send({
+                    message: "Error creating document"
+                })
+            })
+        
+    },
+
+    editProject(req, res) {
+
+    },
+
+    deleteProject(req, res) {
+
+    },
 }
 
 module.exports = controller;
