@@ -1,8 +1,8 @@
 POST http://localhost:2812/save-project
 Content-Type: application/x-www-form-urlencoded
 
-title=hiiii
-&description=hello message
+title=sofia
+&description=pretty
 
 ###
 
@@ -11,3 +11,7 @@ GET http://localhost:2812/get-projects
 ###
 
 GET http://localhost:2812/get-project/5ff9e75f00570c1f94b43693
+
+###
+
+DELETE http://localhost:2812/delete-project/60064f57658e1b366c04f482

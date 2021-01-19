@@ -49,11 +49,15 @@ let controller = {
     },
 
     editProject(req, res) {
-
+        
     },
 
     deleteProject(req, res) {
-
+        Project.findByIdAndRemove(req.params.id, (err, succ) => {
+            console.log(err, succ);
+            if (err) return res.send(err);
+            res.status(204);
+        })
     },
 }
 
