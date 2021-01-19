@@ -7,3 +7,7 @@ title=hiiii
 ###
 
 GET http://localhost:2812/get-projects
+
+###
+
+GET http://localhost:2812/get-project/5ff9e75f00570c1f94b43693

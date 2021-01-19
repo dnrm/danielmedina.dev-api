@@ -25,7 +25,10 @@ let controller = {
     },
 
     getOneProject(req, res) {
-        
+        Project.findById(req.params.id, (err, succ) => {
+            if (err) return console.log(err);
+            res.status(200).send(succ)
+        });
     },
 
     saveProject(req, res) {
